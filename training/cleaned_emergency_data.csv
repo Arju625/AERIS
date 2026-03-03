@@ -1,0 +1,501 @@
+text,emergency_type,severity,clean_text
+violent fight in public place,crime,medium,violent fight public place
+suspicious activity noticed,crime,medium,suspicious activity noticed
+flood water entering house,natural_disaster,high,flood water entering house
+fire in kitchen spreading fast,fire,high,fire kitchen spreading fast
+landslide blocking road,natural_disaster,medium,landslide blocking road
+storm damaged houses,natural_disaster,high,storm damaged houses
+slipped and fell on stairs,accident,high,slipped fell stairs
+unconscious after fall,medical,high,unconscious fall
+train accident reported,accident,low,train accident reported
+cyclone warning issued,natural_disaster,high,cyclone warning issued
+fire in warehouse,fire,medium,fire warehouse
+person attacked on street,crime,medium,person attacked street
+burn injury on hand,medical,medium,burn injury hand
+small fire in dustbin,fire,medium,small fire dustbin
+truck collided with bus,accident,medium,truck collided bus
+train accident reported,accident,low,train accident reported
+child fainted in school,medical,high,child fainted school
+unconscious after fall,medical,low,unconscious fall
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+heavy rain causing traffic block,natural_disaster,high,heavy rain causing traffic block
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+kidnapping suspected,crime,medium,kidnapping suspected
+house break in reported,crime,high,house break reported
+armed threat reported,crime,medium,armed threat reported
+landslide blocking road,natural_disaster,medium,landslide blocking road
+person hit by vehicle,accident,low,person hit vehicle
+multiple vehicle collision,accident,high,multiple vehicle collision
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+armed threat reported,crime,medium,armed threat reported
+high fever with vomiting,medical,high,high fever vomiting
+car caught fire,fire,medium,car caught fire
+slipped and fell on stairs,accident,low,slipped fell stairs
+violent fight in public place,crime,medium,violent fight public place
+unconscious after fall,medical,high,unconscious fall
+multiple vehicle collision,accident,medium,multiple vehicle collision
+person attacked on street,crime,medium,person attacked street
+flood water entering house,natural_disaster,high,flood water entering house
+house fire at night,fire,low,house fire night
+forest fire nearby,fire,medium,forest fire nearby
+child fainted in school,medical,low,child fainted school
+snatching incident occurred,crime,medium,snatching incident occurred
+drought affecting crops,natural_disaster,medium,drought affecting crops
+difficulty in breathing,medical,low,difficulty breathing
+drought affecting crops,natural_disaster,medium,drought affecting crops
+minor road accident no injuries,accident,low,minor road accident injuries
+allergic reaction swelling face,medical,medium,allergic reaction swelling face
+suspicious activity noticed,crime,high,suspicious activity noticed
+fire in kitchen spreading fast,fire,medium,fire kitchen spreading fast
+difficulty in breathing,medical,high,difficulty breathing
+car caught fire,fire,medium,car caught fire
+storm damaged houses,natural_disaster,high,storm damaged houses
+small fire in dustbin,fire,high,small fire dustbin
+gas cylinder caught fire,fire,medium,gas cylinder caught fire
+house fire at night,fire,high,house fire night
+storm damaged houses,natural_disaster,high,storm damaged houses
+car caught fire,fire,low,car caught fire
+small fire in dustbin,fire,medium,small fire dustbin
+forest fire nearby,fire,high,forest fire nearby
+child fainted in school,medical,high,child fainted school
+cyclone warning issued,natural_disaster,high,cyclone warning issued
+sudden stroke symptoms,medical,medium,sudden stroke symptoms
+person hit by vehicle,accident,medium,person hit vehicle
+unconscious after fall,medical,medium,unconscious fall
+storm damaged houses,natural_disaster,high,storm damaged houses
+theft in shop,crime,medium,theft shop
+gas cylinder caught fire,fire,low,gas cylinder caught fire
+slipped and fell on stairs,accident,medium,slipped fell stairs
+landslide blocking road,natural_disaster,high,landslide blocking road
+suspicious activity noticed,crime,high,suspicious activity noticed
+tsunami alert issued,natural_disaster,medium,tsunami alert issued
+drought affecting crops,natural_disaster,medium,drought affecting crops
+truck collided with bus,accident,low,truck collided bus
+house fire at night,fire,low,house fire night
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+person attacked on street,crime,high,person attacked street
+difficulty in breathing,medical,low,difficulty breathing
+car crash on highway with injuries,accident,medium,car crash highway injuries
+difficulty in breathing,medical,medium,difficulty breathing
+house break in reported,crime,medium,house break reported
+fire in warehouse,fire,high,fire warehouse
+person hit by vehicle,accident,low,person hit vehicle
+fire in kitchen spreading fast,fire,medium,fire kitchen spreading fast
+small fire in dustbin,fire,low,small fire dustbin
+earthquake shaking buildings,natural_disaster,medium,earthquake shaking buildings
+flood water entering house,natural_disaster,medium,flood water entering house
+person collapsed and not breathing,medical,low,person collapsed breathing
+train accident reported,accident,high,train accident reported
+tsunami alert issued,natural_disaster,medium,tsunami alert issued
+flood water entering house,natural_disaster,medium,flood water entering house
+flood water entering house,natural_disaster,high,flood water entering house
+fire in kitchen spreading fast,fire,low,fire kitchen spreading fast
+kidnapping suspected,crime,high,kidnapping suspected
+gas cylinder caught fire,fire,medium,gas cylinder caught fire
+person attacked on street,crime,high,person attacked street
+minor road accident no injuries,accident,medium,minor road accident injuries
+short circuit causing flames,fire,medium,short circuit causing flames
+small fire in dustbin,fire,high,small fire dustbin
+unconscious after fall,medical,high,unconscious fall
+smoke coming from electric board,fire,high,smoke coming electric board
+armed threat reported,crime,high,armed threat reported
+burn injury on hand,medical,medium,burn injury hand
+tsunami alert issued,natural_disaster,medium,tsunami alert issued
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+sudden stroke symptoms,medical,high,sudden stroke symptoms
+multiple vehicle collision,accident,high,multiple vehicle collision
+severe chest pain and sweating,medical,medium,severe chest pain sweating
+child injured while playing,accident,medium,child injured playing
+truck collided with bus,accident,medium,truck collided bus
+violent fight in public place,crime,high,violent fight public place
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+train accident reported,accident,low,train accident reported
+house break in reported,crime,medium,house break reported
+assault case reported,crime,high,assault case reported
+train accident reported,accident,low,train accident reported
+multiple vehicle collision,accident,high,multiple vehicle collision
+car crash on highway with injuries,accident,high,car crash highway injuries
+person attacked on street,crime,high,person attacked street
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+bleeding heavily from wound,medical,medium,bleeding heavily wound
+flood water entering house,natural_disaster,high,flood water entering house
+building on fire,fire,high,building fire
+smoke coming from electric board,fire,high,smoke coming electric board
+difficulty in breathing,medical,high,difficulty breathing
+person hit by vehicle,accident,low,person hit vehicle
+construction accident worker injured,accident,low,construction accident worker injured
+minor road accident no injuries,accident,medium,minor road accident injuries
+short circuit causing flames,fire,high,short circuit causing flames
+house fire at night,fire,low,house fire night
+bike accident with broken arm,accident,medium,bike accident broken arm
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+building on fire,fire,low,building fire
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+violent fight in public place,crime,medium,violent fight public place
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+bleeding heavily from wound,medical,medium,bleeding heavily wound
+train accident reported,accident,high,train accident reported
+robbery happening nearby,crime,high,robbery happening nearby
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+gas cylinder caught fire,fire,low,gas cylinder caught fire
+severe chest pain and sweating,medical,low,severe chest pain sweating
+building on fire,fire,high,building fire
+difficulty in breathing,medical,low,difficulty breathing
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+slipped and fell on stairs,accident,low,slipped fell stairs
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+bike accident with broken arm,accident,high,bike accident broken arm
+bleeding heavily from wound,medical,low,bleeding heavily wound
+robbery happening nearby,crime,high,robbery happening nearby
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+child injured while playing,accident,high,child injured playing
+fire in kitchen spreading fast,fire,high,fire kitchen spreading fast
+robbery happening nearby,crime,high,robbery happening nearby
+bleeding heavily from wound,medical,high,bleeding heavily wound
+minor road accident no injuries,accident,low,minor road accident injuries
+forest fire nearby,fire,medium,forest fire nearby
+person collapsed and not breathing,medical,medium,person collapsed breathing
+house break in reported,crime,high,house break reported
+heatwave causing illness,natural_disaster,medium,heatwave causing illness
+fire in kitchen spreading fast,fire,medium,fire kitchen spreading fast
+drought affecting crops,natural_disaster,medium,drought affecting crops
+kidnapping suspected,crime,high,kidnapping suspected
+construction accident worker injured,accident,low,construction accident worker injured
+kidnapping suspected,crime,medium,kidnapping suspected
+heavy rain causing traffic block,natural_disaster,medium,heavy rain causing traffic block
+construction accident worker injured,accident,high,construction accident worker injured
+suspicious activity noticed,crime,medium,suspicious activity noticed
+car crash on highway with injuries,accident,medium,car crash highway injuries
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+short circuit causing flames,fire,high,short circuit causing flames
+person attacked on street,crime,high,person attacked street
+child fainted in school,medical,low,child fainted school
+house fire at night,fire,low,house fire night
+construction accident worker injured,accident,high,construction accident worker injured
+armed threat reported,crime,high,armed threat reported
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+child injured while playing,accident,high,child injured playing
+construction accident worker injured,accident,high,construction accident worker injured
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+fire in warehouse,fire,high,fire warehouse
+bike accident with broken arm,accident,low,bike accident broken arm
+building on fire,fire,medium,building fire
+person collapsed and not breathing,medical,high,person collapsed breathing
+person collapsed and not breathing,medical,high,person collapsed breathing
+person hit by vehicle,accident,medium,person hit vehicle
+child injured while playing,accident,low,child injured playing
+house fire at night,fire,low,house fire night
+slipped and fell on stairs,accident,medium,slipped fell stairs
+sudden stroke symptoms,medical,low,sudden stroke symptoms
+cyclone warning issued,natural_disaster,medium,cyclone warning issued
+landslide blocking road,natural_disaster,medium,landslide blocking road
+multiple vehicle collision,accident,low,multiple vehicle collision
+severe chest pain and sweating,medical,low,severe chest pain sweating
+person attacked on street,crime,medium,person attacked street
+snatching incident occurred,crime,high,snatching incident occurred
+house break in reported,crime,high,house break reported
+person attacked on street,crime,medium,person attacked street
+heatwave causing illness,natural_disaster,medium,heatwave causing illness
+forest fire nearby,fire,high,forest fire nearby
+burn injury on hand,medical,low,burn injury hand
+difficulty in breathing,medical,medium,difficulty breathing
+child fainted in school,medical,medium,child fainted school
+difficulty in breathing,medical,high,difficulty breathing
+smoke coming from electric board,fire,high,smoke coming electric board
+child fainted in school,medical,medium,child fainted school
+suspicious activity noticed,crime,high,suspicious activity noticed
+house break in reported,crime,medium,house break reported
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+gas cylinder caught fire,fire,medium,gas cylinder caught fire
+gas cylinder caught fire,fire,high,gas cylinder caught fire
+earthquake shaking buildings,natural_disaster,medium,earthquake shaking buildings
+unconscious after fall,medical,high,unconscious fall
+fire in kitchen spreading fast,fire,high,fire kitchen spreading fast
+slipped and fell on stairs,accident,low,slipped fell stairs
+high fever with vomiting,medical,medium,high fever vomiting
+robbery happening nearby,crime,medium,robbery happening nearby
+snatching incident occurred,crime,high,snatching incident occurred
+high fever with vomiting,medical,medium,high fever vomiting
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+person hit by vehicle,accident,medium,person hit vehicle
+person collapsed and not breathing,medical,low,person collapsed breathing
+child fainted in school,medical,medium,child fainted school
+landslide blocking road,natural_disaster,high,landslide blocking road
+assault case reported,crime,high,assault case reported
+smoke coming from electric board,fire,high,smoke coming electric board
+sudden stroke symptoms,medical,high,sudden stroke symptoms
+child fainted in school,medical,high,child fainted school
+child fainted in school,medical,low,child fainted school
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+bleeding heavily from wound,medical,high,bleeding heavily wound
+drought affecting crops,natural_disaster,medium,drought affecting crops
+fire in kitchen spreading fast,fire,low,fire kitchen spreading fast
+person hit by vehicle,accident,high,person hit vehicle
+landslide blocking road,natural_disaster,medium,landslide blocking road
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+gas cylinder caught fire,fire,high,gas cylinder caught fire
+building on fire,fire,low,building fire
+drought affecting crops,natural_disaster,medium,drought affecting crops
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+train accident reported,accident,low,train accident reported
+person hit by vehicle,accident,medium,person hit vehicle
+fire in kitchen spreading fast,fire,medium,fire kitchen spreading fast
+landslide blocking road,natural_disaster,medium,landslide blocking road
+theft in shop,crime,medium,theft shop
+burn injury on hand,medical,medium,burn injury hand
+child injured while playing,accident,medium,child injured playing
+person attacked on street,crime,medium,person attacked street
+gas cylinder caught fire,fire,high,gas cylinder caught fire
+car crash on highway with injuries,accident,medium,car crash highway injuries
+theft in shop,crime,medium,theft shop
+train accident reported,accident,medium,train accident reported
+construction accident worker injured,accident,high,construction accident worker injured
+smoke coming from electric board,fire,medium,smoke coming electric board
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+cyclone warning issued,natural_disaster,high,cyclone warning issued
+cyclone warning issued,natural_disaster,medium,cyclone warning issued
+car crash on highway with injuries,accident,medium,car crash highway injuries
+assault case reported,crime,high,assault case reported
+allergic reaction swelling face,medical,high,allergic reaction swelling face
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+high fever with vomiting,medical,high,high fever vomiting
+construction accident worker injured,accident,low,construction accident worker injured
+fire in warehouse,fire,medium,fire warehouse
+severe chest pain and sweating,medical,medium,severe chest pain sweating
+snatching incident occurred,crime,medium,snatching incident occurred
+person hit by vehicle,accident,low,person hit vehicle
+short circuit causing flames,fire,high,short circuit causing flames
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+violent fight in public place,crime,medium,violent fight public place
+minor road accident no injuries,accident,medium,minor road accident injuries
+theft in shop,crime,high,theft shop
+person attacked on street,crime,medium,person attacked street
+storm damaged houses,natural_disaster,medium,storm damaged houses
+gas cylinder caught fire,fire,low,gas cylinder caught fire
+smoke coming from electric board,fire,low,smoke coming electric board
+fire in kitchen spreading fast,fire,high,fire kitchen spreading fast
+sudden stroke symptoms,medical,low,sudden stroke symptoms
+person attacked on street,crime,high,person attacked street
+kidnapping suspected,crime,high,kidnapping suspected
+car crash on highway with injuries,accident,high,car crash highway injuries
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+car crash on highway with injuries,accident,low,car crash highway injuries
+bike accident with broken arm,accident,high,bike accident broken arm
+armed threat reported,crime,high,armed threat reported
+storm damaged houses,natural_disaster,medium,storm damaged houses
+person attacked on street,crime,medium,person attacked street
+construction accident worker injured,accident,high,construction accident worker injured
+gas cylinder caught fire,fire,medium,gas cylinder caught fire
+earthquake shaking buildings,natural_disaster,medium,earthquake shaking buildings
+storm damaged houses,natural_disaster,medium,storm damaged houses
+train accident reported,accident,medium,train accident reported
+landslide blocking road,natural_disaster,high,landslide blocking road
+heatwave causing illness,natural_disaster,medium,heatwave causing illness
+flood water entering house,natural_disaster,medium,flood water entering house
+smoke coming from electric board,fire,low,smoke coming electric board
+construction accident worker injured,accident,high,construction accident worker injured
+smoke coming from electric board,fire,medium,smoke coming electric board
+burn injury on hand,medical,medium,burn injury hand
+train accident reported,accident,medium,train accident reported
+fire in kitchen spreading fast,fire,high,fire kitchen spreading fast
+theft in shop,crime,medium,theft shop
+armed threat reported,crime,high,armed threat reported
+cyclone warning issued,natural_disaster,high,cyclone warning issued
+difficulty in breathing,medical,high,difficulty breathing
+forest fire nearby,fire,medium,forest fire nearby
+multiple vehicle collision,accident,high,multiple vehicle collision
+earthquake shaking buildings,natural_disaster,medium,earthquake shaking buildings
+allergic reaction swelling face,medical,medium,allergic reaction swelling face
+slipped and fell on stairs,accident,medium,slipped fell stairs
+gas cylinder caught fire,fire,high,gas cylinder caught fire
+assault case reported,crime,high,assault case reported
+car caught fire,fire,medium,car caught fire
+theft in shop,crime,high,theft shop
+robbery happening nearby,crime,high,robbery happening nearby
+car caught fire,fire,medium,car caught fire
+car crash on highway with injuries,accident,high,car crash highway injuries
+bleeding heavily from wound,medical,high,bleeding heavily wound
+forest fire nearby,fire,low,forest fire nearby
+bike accident with broken arm,accident,medium,bike accident broken arm
+assault case reported,crime,medium,assault case reported
+bleeding heavily from wound,medical,medium,bleeding heavily wound
+heavy rain causing traffic block,natural_disaster,high,heavy rain causing traffic block
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+train accident reported,accident,low,train accident reported
+forest fire nearby,fire,low,forest fire nearby
+difficulty in breathing,medical,high,difficulty breathing
+short circuit causing flames,fire,high,short circuit causing flames
+bleeding heavily from wound,medical,low,bleeding heavily wound
+house break in reported,crime,high,house break reported
+person attacked on street,crime,medium,person attacked street
+multiple vehicle collision,accident,medium,multiple vehicle collision
+construction accident worker injured,accident,high,construction accident worker injured
+fire in warehouse,fire,low,fire warehouse
+building on fire,fire,medium,building fire
+burn injury on hand,medical,medium,burn injury hand
+snatching incident occurred,crime,medium,snatching incident occurred
+house break in reported,crime,high,house break reported
+burn injury on hand,medical,medium,burn injury hand
+construction accident worker injured,accident,medium,construction accident worker injured
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+multiple vehicle collision,accident,high,multiple vehicle collision
+storm damaged houses,natural_disaster,high,storm damaged houses
+slipped and fell on stairs,accident,medium,slipped fell stairs
+truck collided with bus,accident,low,truck collided bus
+person collapsed and not breathing,medical,low,person collapsed breathing
+slipped and fell on stairs,accident,high,slipped fell stairs
+bleeding heavily from wound,medical,medium,bleeding heavily wound
+gas cylinder caught fire,fire,medium,gas cylinder caught fire
+person collapsed and not breathing,medical,high,person collapsed breathing
+armed threat reported,crime,medium,armed threat reported
+storm damaged houses,natural_disaster,medium,storm damaged houses
+theft in shop,crime,medium,theft shop
+tsunami alert issued,natural_disaster,medium,tsunami alert issued
+heatwave causing illness,natural_disaster,medium,heatwave causing illness
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+person collapsed and not breathing,medical,medium,person collapsed breathing
+heavy rain causing traffic block,natural_disaster,high,heavy rain causing traffic block
+person attacked on street,crime,medium,person attacked street
+drought affecting crops,natural_disaster,high,drought affecting crops
+multiple vehicle collision,accident,high,multiple vehicle collision
+difficulty in breathing,medical,low,difficulty breathing
+storm damaged houses,natural_disaster,high,storm damaged houses
+bleeding heavily from wound,medical,medium,bleeding heavily wound
+truck collided with bus,accident,low,truck collided bus
+tsunami alert issued,natural_disaster,medium,tsunami alert issued
+assault case reported,crime,medium,assault case reported
+truck collided with bus,accident,low,truck collided bus
+earthquake shaking buildings,natural_disaster,medium,earthquake shaking buildings
+heavy rain causing traffic block,natural_disaster,high,heavy rain causing traffic block
+flood water entering house,natural_disaster,medium,flood water entering house
+high fever with vomiting,medical,medium,high fever vomiting
+armed threat reported,crime,high,armed threat reported
+armed threat reported,crime,high,armed threat reported
+person attacked on street,crime,medium,person attacked street
+landslide blocking road,natural_disaster,medium,landslide blocking road
+suspicious activity noticed,crime,high,suspicious activity noticed
+fire in kitchen spreading fast,fire,medium,fire kitchen spreading fast
+burn injury on hand,medical,high,burn injury hand
+construction accident worker injured,accident,high,construction accident worker injured
+flood water entering house,natural_disaster,medium,flood water entering house
+landslide blocking road,natural_disaster,high,landslide blocking road
+person attacked on street,crime,high,person attacked street
+severe chest pain and sweating,medical,high,severe chest pain sweating
+tsunami alert issued,natural_disaster,high,tsunami alert issued
+earthquake shaking buildings,natural_disaster,medium,earthquake shaking buildings
+robbery happening nearby,crime,medium,robbery happening nearby
+slipped and fell on stairs,accident,high,slipped fell stairs
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+burn injury on hand,medical,high,burn injury hand
+gas cylinder caught fire,fire,high,gas cylinder caught fire
+snatching incident occurred,crime,medium,snatching incident occurred
+allergic reaction swelling face,medical,medium,allergic reaction swelling face
+person collapsed and not breathing,medical,low,person collapsed breathing
+house break in reported,crime,high,house break reported
+building on fire,fire,high,building fire
+unconscious after fall,medical,medium,unconscious fall
+flood water entering house,natural_disaster,medium,flood water entering house
+assault case reported,crime,medium,assault case reported
+gas cylinder caught fire,fire,medium,gas cylinder caught fire
+house break in reported,crime,medium,house break reported
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+allergic reaction swelling face,medical,high,allergic reaction swelling face
+heatwave causing illness,natural_disaster,medium,heatwave causing illness
+slipped and fell on stairs,accident,high,slipped fell stairs
+drought affecting crops,natural_disaster,high,drought affecting crops
+car crash on highway with injuries,accident,high,car crash highway injuries
+burn injury on hand,medical,high,burn injury hand
+snatching incident occurred,crime,medium,snatching incident occurred
+person hit by vehicle,accident,medium,person hit vehicle
+heavy rain causing traffic block,natural_disaster,high,heavy rain causing traffic block
+short circuit causing flames,fire,medium,short circuit causing flames
+high fever with vomiting,medical,high,high fever vomiting
+person collapsed and not breathing,medical,low,person collapsed breathing
+difficulty in breathing,medical,low,difficulty breathing
+storm damaged houses,natural_disaster,high,storm damaged houses
+multiple vehicle collision,accident,high,multiple vehicle collision
+train accident reported,accident,low,train accident reported
+storm damaged houses,natural_disaster,medium,storm damaged houses
+flood water entering house,natural_disaster,medium,flood water entering house
+child fainted in school,medical,medium,child fainted school
+building on fire,fire,medium,building fire
+forest fire nearby,fire,medium,forest fire nearby
+person collapsed and not breathing,medical,high,person collapsed breathing
+burn injury on hand,medical,high,burn injury hand
+forest fire nearby,fire,high,forest fire nearby
+child injured while playing,accident,high,child injured playing
+forest fire nearby,fire,low,forest fire nearby
+person attacked on street,crime,high,person attacked street
+suspicious activity noticed,crime,medium,suspicious activity noticed
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+allergic reaction swelling face,medical,high,allergic reaction swelling face
+bike accident with broken arm,accident,high,bike accident broken arm
+person hit by vehicle,accident,medium,person hit vehicle
+car crash on highway with injuries,accident,low,car crash highway injuries
+cyclone warning issued,natural_disaster,medium,cyclone warning issued
+forest fire nearby,fire,high,forest fire nearby
+flood water entering house,natural_disaster,medium,flood water entering house
+high fever with vomiting,medical,medium,high fever vomiting
+forest fire nearby,fire,high,forest fire nearby
+kidnapping suspected,crime,high,kidnapping suspected
+short circuit causing flames,fire,low,short circuit causing flames
+river overflow flooding village,natural_disaster,high,river overflow flooding village
+cyclone warning issued,natural_disaster,medium,cyclone warning issued
+kidnapping suspected,crime,high,kidnapping suspected
+short circuit causing flames,fire,low,short circuit causing flames
+landslide blocking road,natural_disaster,medium,landslide blocking road
+cyclone warning issued,natural_disaster,high,cyclone warning issued
+heatwave causing illness,natural_disaster,high,heatwave causing illness
+unconscious after fall,medical,medium,unconscious fall
+building on fire,fire,low,building fire
+violent fight in public place,crime,medium,violent fight public place
+burn injury on hand,medical,high,burn injury hand
+difficulty in breathing,medical,medium,difficulty breathing
+earthquake shaking buildings,natural_disaster,high,earthquake shaking buildings
+small fire in dustbin,fire,high,small fire dustbin
+violent fight in public place,crime,high,violent fight public place
+unconscious after fall,medical,low,unconscious fall
+car crash on highway with injuries,accident,medium,car crash highway injuries
+burn injury on hand,medical,low,burn injury hand
+cyclone warning issued,natural_disaster,medium,cyclone warning issued
+train accident reported,accident,medium,train accident reported
+person hit by vehicle,accident,low,person hit vehicle
+child injured while playing,accident,high,child injured playing
+fire in warehouse,fire,high,fire warehouse
+child fainted in school,medical,medium,child fainted school
+theft in shop,crime,medium,theft shop
+bike accident with broken arm,accident,medium,bike accident broken arm
+fire in kitchen spreading fast,fire,medium,fire kitchen spreading fast
+landslide blocking road,natural_disaster,medium,landslide blocking road
+forest fire nearby,fire,low,forest fire nearby
+flood water entering house,natural_disaster,high,flood water entering house
+child fainted in school,medical,medium,child fainted school
+slipped and fell on stairs,accident,medium,slipped fell stairs
+sudden stroke symptoms,medical,low,sudden stroke symptoms
+river overflow flooding village,natural_disaster,medium,river overflow flooding village
+train accident reported,accident,low,train accident reported
+person attacked on street,crime,medium,person attacked street
+flood water entering house,natural_disaster,high,flood water entering house
+unconscious after fall,medical,high,unconscious fall
+person attacked on street,crime,high,person attacked street
+car caught fire,fire,low,car caught fire
+landslide blocking road,natural_disaster,high,landslide blocking road
+house break in reported,crime,high,house break reported
+kidnapping suspected,crime,high,kidnapping suspected
+snatching incident occurred,crime,high,snatching incident occurred
+person hit by vehicle,accident,medium,person hit vehicle
+smoke coming from electric board,fire,high,smoke coming electric board
+construction accident worker injured,accident,low,construction accident worker injured
+car crash on highway with injuries,accident,medium,car crash highway injuries
+minor road accident no injuries,accident,medium,minor road accident injuries
+forest fire nearby,fire,high,forest fire nearby
+bleeding heavily from wound,medical,low,bleeding heavily wound
+high fever with vomiting,medical,low,high fever vomiting
+heavy rain causing traffic block,natural_disaster,medium,heavy rain causing traffic block

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AERIS Emergency Test</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            width: 500px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+
+        input, button {
+            padding: 10px;
+            width: 90%;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .high {
+            background-color: red;
+            color: white;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { background-color: darkred; }
+        }
+
+        iframe {
+            margin-top: 15px;
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>AERIS Emergency Test UI</h2>
+
+    <input type="text" id="emergency" placeholder="Describe emergency..." required>
+    <button onclick="predictEmergency()">Predict</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+let userLat = null;
+let userLon = null;
+
+// Get user location automatically
+navigator.geolocation.getCurrentPosition(
+    function(pos) {
+        userLat = pos.coords.latitude;
+        userLon = pos.coords.longitude;
+        console.log("Location success:", userLat, userLon);
+    },
+    function(error) {
+        console.log("Location error:", error.message);
+    }
+);
+
+function predictEmergency() {
+
+    const emergencyText = document.getElementById("emergency").value;
+
+if (!emergencyText) {
+    alert("Please enter emergency.");
+    return;
+}
+
+if (userLat === null) {
+    userLat = 10.02;
+    userLon = 76.34;
+    console.log("Using test coordinates");
+}
+
+    fetch("http://localhost:5000/api/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emergency: emergencyText,
+            lat: userLat,
+            lon: userLon
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        let resultClass = "result";
+        if (data.high_alert) {
+            resultClass += " high";
+        }
+
+        document.getElementById("output").innerHTML = `
+            <div class="${resultClass}">
+                <h3>Emergency Type: ${data.type}</h3>
+                <h4>Severity: ${data.severity}</h4>
+                <p><b>Suggestion:</b> ${data.suggestion}</p>
+                <p><b>Nearest Service:</b> ${data.nearest_service}</p>
+                <p><b>Distance:</b> ${data.distance_km} KM</p>
+                <a href="${data.route_url}" target="_blank">Get Directions</a>
+            </div>
+            <iframe src="${data.map_url}" loading="lazy"></iframe>
+        `;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Backend not running!");
+    });
+}
+</script>
+
+</body>
+</html>

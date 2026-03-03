@@ -1,0 +1,501 @@
+text,emergency_type,severity
+violent fight in public place,crime,medium
+suspicious activity noticed,crime,medium
+flood water entering house,natural_disaster,high
+fire in kitchen spreading fast,fire,high
+landslide blocking road,natural_disaster,medium
+storm damaged houses,natural_disaster,high
+slipped and fell on stairs,accident,high
+unconscious after fall,medical,high
+train accident reported,accident,low
+cyclone warning issued,natural_disaster,high
+fire in warehouse,fire,medium
+person attacked on street,crime,medium
+burn injury on hand,medical,medium
+small fire in dustbin,fire,medium
+truck collided with bus,accident,medium
+train accident reported,accident,low
+child fainted in school,medical,high
+unconscious after fall,medical,low
+heatwave causing illness,natural_disaster,high
+heavy rain causing traffic block,natural_disaster,high
+tsunami alert issued,natural_disaster,high
+heatwave causing illness,natural_disaster,high
+kidnapping suspected,crime,medium
+house break in reported,crime,high
+armed threat reported,crime,medium
+landslide blocking road,natural_disaster,medium
+person hit by vehicle,accident,low
+multiple vehicle collision,accident,high
+earthquake shaking buildings,natural_disaster,high
+armed threat reported,crime,medium
+high fever with vomiting,medical,high
+car caught fire,fire,medium
+slipped and fell on stairs,accident,low
+violent fight in public place,crime,medium
+unconscious after fall,medical,high
+multiple vehicle collision,accident,medium
+person attacked on street,crime,medium
+flood water entering house,natural_disaster,high
+house fire at night,fire,low
+forest fire nearby,fire,medium
+child fainted in school,medical,low
+snatching incident occurred,crime,medium
+drought affecting crops,natural_disaster,medium
+difficulty in breathing,medical,low
+drought affecting crops,natural_disaster,medium
+minor road accident no injuries,accident,low
+allergic reaction swelling face,medical,medium
+suspicious activity noticed,crime,high
+fire in kitchen spreading fast,fire,medium
+difficulty in breathing,medical,high
+car caught fire,fire,medium
+storm damaged houses,natural_disaster,high
+small fire in dustbin,fire,high
+gas cylinder caught fire,fire,medium
+house fire at night,fire,high
+storm damaged houses,natural_disaster,high
+car caught fire,fire,low
+small fire in dustbin,fire,medium
+forest fire nearby,fire,high
+child fainted in school,medical,high
+cyclone warning issued,natural_disaster,high
+sudden stroke symptoms,medical,medium
+person hit by vehicle,accident,medium
+unconscious after fall,medical,medium
+storm damaged houses,natural_disaster,high
+theft in shop,crime,medium
+gas cylinder caught fire,fire,low
+slipped and fell on stairs,accident,medium
+landslide blocking road,natural_disaster,high
+suspicious activity noticed,crime,high
+tsunami alert issued,natural_disaster,medium
+drought affecting crops,natural_disaster,medium
+truck collided with bus,accident,low
+house fire at night,fire,low
+river overflow flooding village,natural_disaster,medium
+heatwave causing illness,natural_disaster,high
+person attacked on street,crime,high
+difficulty in breathing,medical,low
+car crash on highway with injuries,accident,medium
+difficulty in breathing,medical,medium
+house break in reported,crime,medium
+fire in warehouse,fire,high
+person hit by vehicle,accident,low
+fire in kitchen spreading fast,fire,medium
+small fire in dustbin,fire,low
+earthquake shaking buildings,natural_disaster,medium
+flood water entering house,natural_disaster,medium
+person collapsed and not breathing,medical,low
+train accident reported,accident,high
+tsunami alert issued,natural_disaster,medium
+flood water entering house,natural_disaster,medium
+flood water entering house,natural_disaster,high
+fire in kitchen spreading fast,fire,low
+kidnapping suspected,crime,high
+gas cylinder caught fire,fire,medium
+person attacked on street,crime,high
+minor road accident no injuries,accident,medium
+short circuit causing flames,fire,medium
+small fire in dustbin,fire,high
+unconscious after fall,medical,high
+smoke coming from electric board,fire,high
+armed threat reported,crime,high
+burn injury on hand,medical,medium
+tsunami alert issued,natural_disaster,medium
+earthquake shaking buildings,natural_disaster,high
+sudden stroke symptoms,medical,high
+multiple vehicle collision,accident,high
+severe chest pain and sweating,medical,medium
+child injured while playing,accident,medium
+truck collided with bus,accident,medium
+violent fight in public place,crime,high
+heatwave causing illness,natural_disaster,high
+train accident reported,accident,low
+house break in reported,crime,medium
+assault case reported,crime,high
+train accident reported,accident,low
+multiple vehicle collision,accident,high
+car crash on highway with injuries,accident,high
+person attacked on street,crime,high
+earthquake shaking buildings,natural_disaster,high
+heatwave causing illness,natural_disaster,high
+bleeding heavily from wound,medical,medium
+flood water entering house,natural_disaster,high
+building on fire,fire,high
+smoke coming from electric board,fire,high
+difficulty in breathing,medical,high
+person hit by vehicle,accident,low
+construction accident worker injured,accident,low
+minor road accident no injuries,accident,medium
+short circuit causing flames,fire,high
+house fire at night,fire,low
+bike accident with broken arm,accident,medium
+tsunami alert issued,natural_disaster,high
+tsunami alert issued,natural_disaster,high
+building on fire,fire,low
+river overflow flooding village,natural_disaster,high
+violent fight in public place,crime,medium
+tsunami alert issued,natural_disaster,high
+bleeding heavily from wound,medical,medium
+train accident reported,accident,high
+robbery happening nearby,crime,high
+tsunami alert issued,natural_disaster,high
+gas cylinder caught fire,fire,low
+severe chest pain and sweating,medical,low
+building on fire,fire,high
+difficulty in breathing,medical,low
+river overflow flooding village,natural_disaster,medium
+slipped and fell on stairs,accident,low
+river overflow flooding village,natural_disaster,high
+bike accident with broken arm,accident,high
+bleeding heavily from wound,medical,low
+robbery happening nearby,crime,high
+river overflow flooding village,natural_disaster,medium
+child injured while playing,accident,high
+fire in kitchen spreading fast,fire,high
+robbery happening nearby,crime,high
+bleeding heavily from wound,medical,high
+minor road accident no injuries,accident,low
+forest fire nearby,fire,medium
+person collapsed and not breathing,medical,medium
+house break in reported,crime,high
+heatwave causing illness,natural_disaster,medium
+fire in kitchen spreading fast,fire,medium
+drought affecting crops,natural_disaster,medium
+kidnapping suspected,crime,high
+construction accident worker injured,accident,low
+kidnapping suspected,crime,medium
+heavy rain causing traffic block,natural_disaster,medium
+construction accident worker injured,accident,high
+suspicious activity noticed,crime,medium
+car crash on highway with injuries,accident,medium
+river overflow flooding village,natural_disaster,medium
+short circuit causing flames,fire,high
+person attacked on street,crime,high
+child fainted in school,medical,low
+house fire at night,fire,low
+construction accident worker injured,accident,high
+armed threat reported,crime,high
+tsunami alert issued,natural_disaster,high
+child injured while playing,accident,high
+construction accident worker injured,accident,high
+heatwave causing illness,natural_disaster,high
+fire in warehouse,fire,high
+bike accident with broken arm,accident,low
+building on fire,fire,medium
+person collapsed and not breathing,medical,high
+person collapsed and not breathing,medical,high
+person hit by vehicle,accident,medium
+child injured while playing,accident,low
+house fire at night,fire,low
+slipped and fell on stairs,accident,medium
+sudden stroke symptoms,medical,low
+cyclone warning issued,natural_disaster,medium
+landslide blocking road,natural_disaster,medium
+multiple vehicle collision,accident,low
+severe chest pain and sweating,medical,low
+person attacked on street,crime,medium
+snatching incident occurred,crime,high
+house break in reported,crime,high
+person attacked on street,crime,medium
+heatwave causing illness,natural_disaster,medium
+forest fire nearby,fire,high
+burn injury on hand,medical,low
+difficulty in breathing,medical,medium
+child fainted in school,medical,medium
+difficulty in breathing,medical,high
+smoke coming from electric board,fire,high
+child fainted in school,medical,medium
+suspicious activity noticed,crime,high
+house break in reported,crime,medium
+river overflow flooding village,natural_disaster,medium
+gas cylinder caught fire,fire,medium
+gas cylinder caught fire,fire,high
+earthquake shaking buildings,natural_disaster,medium
+unconscious after fall,medical,high
+fire in kitchen spreading fast,fire,high
+slipped and fell on stairs,accident,low
+high fever with vomiting,medical,medium
+robbery happening nearby,crime,medium
+snatching incident occurred,crime,high
+high fever with vomiting,medical,medium
+river overflow flooding village,natural_disaster,high
+person hit by vehicle,accident,medium
+person collapsed and not breathing,medical,low
+child fainted in school,medical,medium
+landslide blocking road,natural_disaster,high
+assault case reported,crime,high
+smoke coming from electric board,fire,high
+sudden stroke symptoms,medical,high
+child fainted in school,medical,high
+child fainted in school,medical,low
+heatwave causing illness,natural_disaster,high
+bleeding heavily from wound,medical,high
+drought affecting crops,natural_disaster,medium
+fire in kitchen spreading fast,fire,low
+person hit by vehicle,accident,high
+landslide blocking road,natural_disaster,medium
+river overflow flooding village,natural_disaster,medium
+gas cylinder caught fire,fire,high
+building on fire,fire,low
+drought affecting crops,natural_disaster,medium
+earthquake shaking buildings,natural_disaster,high
+train accident reported,accident,low
+person hit by vehicle,accident,medium
+fire in kitchen spreading fast,fire,medium
+landslide blocking road,natural_disaster,medium
+theft in shop,crime,medium
+burn injury on hand,medical,medium
+child injured while playing,accident,medium
+person attacked on street,crime,medium
+gas cylinder caught fire,fire,high
+car crash on highway with injuries,accident,medium
+theft in shop,crime,medium
+train accident reported,accident,medium
+construction accident worker injured,accident,high
+smoke coming from electric board,fire,medium
+river overflow flooding village,natural_disaster,high
+cyclone warning issued,natural_disaster,high
+cyclone warning issued,natural_disaster,medium
+car crash on highway with injuries,accident,medium
+assault case reported,crime,high
+allergic reaction swelling face,medical,high
+river overflow flooding village,natural_disaster,medium
+river overflow flooding village,natural_disaster,medium
+river overflow flooding village,natural_disaster,medium
+high fever with vomiting,medical,high
+construction accident worker injured,accident,low
+fire in warehouse,fire,medium
+severe chest pain and sweating,medical,medium
+snatching incident occurred,crime,medium
+person hit by vehicle,accident,low
+short circuit causing flames,fire,high
+river overflow flooding village,natural_disaster,high
+violent fight in public place,crime,medium
+minor road accident no injuries,accident,medium
+theft in shop,crime,high
+person attacked on street,crime,medium
+storm damaged houses,natural_disaster,medium
+gas cylinder caught fire,fire,low
+smoke coming from electric board,fire,low
+fire in kitchen spreading fast,fire,high
+sudden stroke symptoms,medical,low
+person attacked on street,crime,high
+kidnapping suspected,crime,high
+car crash on highway with injuries,accident,high
+river overflow flooding village,natural_disaster,high
+car crash on highway with injuries,accident,low
+bike accident with broken arm,accident,high
+armed threat reported,crime,high
+storm damaged houses,natural_disaster,medium
+person attacked on street,crime,medium
+construction accident worker injured,accident,high
+gas cylinder caught fire,fire,medium
+earthquake shaking buildings,natural_disaster,medium
+storm damaged houses,natural_disaster,medium
+train accident reported,accident,medium
+landslide blocking road,natural_disaster,high
+heatwave causing illness,natural_disaster,medium
+flood water entering house,natural_disaster,medium
+smoke coming from electric board,fire,low
+construction accident worker injured,accident,high
+smoke coming from electric board,fire,medium
+burn injury on hand,medical,medium
+train accident reported,accident,medium
+fire in kitchen spreading fast,fire,high
+theft in shop,crime,medium
+armed threat reported,crime,high
+cyclone warning issued,natural_disaster,high
+difficulty in breathing,medical,high
+forest fire nearby,fire,medium
+multiple vehicle collision,accident,high
+earthquake shaking buildings,natural_disaster,medium
+allergic reaction swelling face,medical,medium
+slipped and fell on stairs,accident,medium
+gas cylinder caught fire,fire,high
+assault case reported,crime,high
+car caught fire,fire,medium
+theft in shop,crime,high
+robbery happening nearby,crime,high
+car caught fire,fire,medium
+car crash on highway with injuries,accident,high
+bleeding heavily from wound,medical,high
+forest fire nearby,fire,low
+bike accident with broken arm,accident,medium
+assault case reported,crime,medium
+bleeding heavily from wound,medical,medium
+heavy rain causing traffic block,natural_disaster,high
+tsunami alert issued,natural_disaster,high
+train accident reported,accident,low
+forest fire nearby,fire,low
+difficulty in breathing,medical,high
+short circuit causing flames,fire,high
+bleeding heavily from wound,medical,low
+house break in reported,crime,high
+person attacked on street,crime,medium
+multiple vehicle collision,accident,medium
+construction accident worker injured,accident,high
+fire in warehouse,fire,low
+building on fire,fire,medium
+burn injury on hand,medical,medium
+snatching incident occurred,crime,medium
+house break in reported,crime,high
+burn injury on hand,medical,medium
+construction accident worker injured,accident,medium
+river overflow flooding village,natural_disaster,medium
+multiple vehicle collision,accident,high
+storm damaged houses,natural_disaster,high
+slipped and fell on stairs,accident,medium
+truck collided with bus,accident,low
+person collapsed and not breathing,medical,low
+slipped and fell on stairs,accident,high
+bleeding heavily from wound,medical,medium
+gas cylinder caught fire,fire,medium
+person collapsed and not breathing,medical,high
+armed threat reported,crime,medium
+storm damaged houses,natural_disaster,medium
+theft in shop,crime,medium
+tsunami alert issued,natural_disaster,medium
+heatwave causing illness,natural_disaster,medium
+heatwave causing illness,natural_disaster,high
+person collapsed and not breathing,medical,medium
+heavy rain causing traffic block,natural_disaster,high
+person attacked on street,crime,medium
+drought affecting crops,natural_disaster,high
+multiple vehicle collision,accident,high
+difficulty in breathing,medical,low
+storm damaged houses,natural_disaster,high
+bleeding heavily from wound,medical,medium
+truck collided with bus,accident,low
+tsunami alert issued,natural_disaster,medium
+assault case reported,crime,medium
+truck collided with bus,accident,low
+earthquake shaking buildings,natural_disaster,medium
+heavy rain causing traffic block,natural_disaster,high
+flood water entering house,natural_disaster,medium
+high fever with vomiting,medical,medium
+armed threat reported,crime,high
+armed threat reported,crime,high
+person attacked on street,crime,medium
+landslide blocking road,natural_disaster,medium
+suspicious activity noticed,crime,high
+fire in kitchen spreading fast,fire,medium
+burn injury on hand,medical,high
+construction accident worker injured,accident,high
+flood water entering house,natural_disaster,medium
+landslide blocking road,natural_disaster,high
+person attacked on street,crime,high
+severe chest pain and sweating,medical,high
+tsunami alert issued,natural_disaster,high
+earthquake shaking buildings,natural_disaster,medium
+robbery happening nearby,crime,medium
+slipped and fell on stairs,accident,high
+heatwave causing illness,natural_disaster,high
+burn injury on hand,medical,high
+gas cylinder caught fire,fire,high
+snatching incident occurred,crime,medium
+allergic reaction swelling face,medical,medium
+person collapsed and not breathing,medical,low
+house break in reported,crime,high
+building on fire,fire,high
+unconscious after fall,medical,medium
+flood water entering house,natural_disaster,medium
+assault case reported,crime,medium
+gas cylinder caught fire,fire,medium
+house break in reported,crime,medium
+earthquake shaking buildings,natural_disaster,high
+allergic reaction swelling face,medical,high
+heatwave causing illness,natural_disaster,medium
+slipped and fell on stairs,accident,high
+drought affecting crops,natural_disaster,high
+car crash on highway with injuries,accident,high
+burn injury on hand,medical,high
+snatching incident occurred,crime,medium
+person hit by vehicle,accident,medium
+heavy rain causing traffic block,natural_disaster,high
+short circuit causing flames,fire,medium
+high fever with vomiting,medical,high
+person collapsed and not breathing,medical,low
+difficulty in breathing,medical,low
+storm damaged houses,natural_disaster,high
+multiple vehicle collision,accident,high
+train accident reported,accident,low
+storm damaged houses,natural_disaster,medium
+flood water entering house,natural_disaster,medium
+child fainted in school,medical,medium
+building on fire,fire,medium
+forest fire nearby,fire,medium
+person collapsed and not breathing,medical,high
+burn injury on hand,medical,high
+forest fire nearby,fire,high
+child injured while playing,accident,high
+forest fire nearby,fire,low
+person attacked on street,crime,high
+suspicious activity noticed,crime,medium
+heatwave causing illness,natural_disaster,high
+earthquake shaking buildings,natural_disaster,high
+allergic reaction swelling face,medical,high
+bike accident with broken arm,accident,high
+person hit by vehicle,accident,medium
+car crash on highway with injuries,accident,low
+cyclone warning issued,natural_disaster,medium
+forest fire nearby,fire,high
+flood water entering house,natural_disaster,medium
+high fever with vomiting,medical,medium
+forest fire nearby,fire,high
+kidnapping suspected,crime,high
+short circuit causing flames,fire,low
+river overflow flooding village,natural_disaster,high
+cyclone warning issued,natural_disaster,medium
+kidnapping suspected,crime,high
+short circuit causing flames,fire,low
+landslide blocking road,natural_disaster,medium
+cyclone warning issued,natural_disaster,high
+heatwave causing illness,natural_disaster,high
+unconscious after fall,medical,medium
+building on fire,fire,low
+violent fight in public place,crime,medium
+burn injury on hand,medical,high
+difficulty in breathing,medical,medium
+earthquake shaking buildings,natural_disaster,high
+small fire in dustbin,fire,high
+violent fight in public place,crime,high
+unconscious after fall,medical,low
+car crash on highway with injuries,accident,medium
+burn injury on hand,medical,low
+cyclone warning issued,natural_disaster,medium
+train accident reported,accident,medium
+person hit by vehicle,accident,low
+child injured while playing,accident,high
+fire in warehouse,fire,high
+child fainted in school,medical,medium
+theft in shop,crime,medium
+bike accident with broken arm,accident,medium
+fire in kitchen spreading fast,fire,medium
+landslide blocking road,natural_disaster,medium
+forest fire nearby,fire,low
+flood water entering house,natural_disaster,high
+child fainted in school,medical,medium
+slipped and fell on stairs,accident,medium
+sudden stroke symptoms,medical,low
+river overflow flooding village,natural_disaster,medium
+train accident reported,accident,low
+person attacked on street,crime,medium
+flood water entering house,natural_disaster,high
+unconscious after fall,medical,high
+person attacked on street,crime,high
+car caught fire,fire,low
+landslide blocking road,natural_disaster,high
+house break in reported,crime,high
+kidnapping suspected,crime,high
+snatching incident occurred,crime,high
+person hit by vehicle,accident,medium
+smoke coming from electric board,fire,high
+construction accident worker injured,accident,low
+car crash on highway with injuries,accident,medium
+minor road accident no injuries,accident,medium
+forest fire nearby,fire,high
+bleeding heavily from wound,medical,low
+high fever with vomiting,medical,low
+heavy rain causing traffic block,natural_disaster,medium

@@ -1,7 +1,24 @@
 import Navbar from './components/Navbar';
 import './index.css';
+import { useEffect } from 'react'
+import supabase from './supabaseClient'
 
 function App() {
+
+  // ✅ Supabase test
+  useEffect(() => {
+    async function test() {
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+
+      console.log("DATA:", data)
+      console.log("ERROR:", error)
+    }
+
+    test()
+  }, [])
+
   return (
     <div className="min-h-screen w-full relative flex flex-col font-montserrat overflow-x-hidden bg-white text-text-dark">
 
@@ -18,7 +35,9 @@ function App() {
           <img src="/assets/logo.svg" alt="Aeris Icon" className="h-[80px] mb-[20px] object-contain" />
           <h2 className="text-[1.5rem] lg:text-[2rem] font-extrabold text-text-dark mb-[5px] tracking-[-0.5px]">HELLO WORLD!</h2>
           <h1 className="text-[4rem] lg:text-[6.5rem] font-black text-primary-red mb-[10px] leading-[1.1] tracking-[-2px]">MEET AERIS</h1>
-          <h3 className="text-[1.5rem] font-bold text-text-dark mb-[40px] max-w-full md:max-w-[80%]">SMART EMERGENCY RESPONSE SYSTEM</h3>
+          <h3 className="text-[1.5rem] font-bold text-text-dark mb-[40px] max-w-full md:max-w-[80%]">
+            SMART EMERGENCY RESPONSE SYSTEM
+          </h3>
 
           <div className="flex flex-col md:flex-row items-center gap-[20px]">
             <div className="flex">

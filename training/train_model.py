@@ -1,37 +1,64 @@
 import pandas as pd
-import joblib
-from sklearn.feature_extraction.text import TfidfVectorizer
+import pickle
+import re
+import nltk
+from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Load cleaned data
+nltk.download('stopwords')
+
+# -------- LOAD DATA --------
 df = pd.read_csv("cleaned_emergency_data.csv")
+df.rename(columns={"emergency_type": "type"}, inplace=True)
+df = df.drop_duplicates()
 
-X_text = df["clean_text"]
-y = df["emergency_type"]
+stop_words = set(stopwords.words('english')) - {"help", "urgent", "now", "emergency", "immediately"}
 
-# Vectorization
+def clean_text(text):
+    if pd.isna(text):
+        return ""
+    text = text.lower()
+    text = re.sub(r'[^a-zA-Z ]', '', text)
+    words = text.split()
+    words = [w for w in words if w not in stop_words]
+    return " ".join(words)
+
+df["clean_text"] = df["clean_text"].apply(clean_text)
+df = df.dropna(subset=["clean_text", "type", "severity"])
+
+# -------- FEATURES --------
+X = df["clean_text"]
+y_type = df["type"]
+y_severity = df["severity"]
+
+# -------- TF-IDF --------
 vectorizer = TfidfVectorizer(max_features=3000)
-X = vectorizer.fit_transform(X_text)
+X_vec = vectorizer.fit_transform(X)
 
-# Split data
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
+# -------- TRAIN/TEST SPLIT --------
+X_train, X_test, y_type_train, y_type_test = train_test_split(X_vec, y_type, test_size=0.2, random_state=42)
+_, _, y_severity_train, y_severity_test = train_test_split(X_vec, y_severity, test_size=0.2, random_state=42)
 
-# Train model
-model = LogisticRegression(max_iter=1000)
-model.fit(X_train, y_train)
+# -------- TRAIN MODELS --------
+type_model = LogisticRegression(max_iter=1000)
+type_model.fit(X_train, y_type_train)
 
-# Test accuracy
-predictions = model.predict(X_test)
-accuracy = accuracy_score(y_test, predictions)
+severity_model = LogisticRegression(max_iter=1000)
+severity_model.fit(X_train, y_severity_train)
 
-print("Model Accuracy:", accuracy)
+# -------- EVALUATION --------
+print("\n📊 TYPE CLASSIFICATION REPORT")
+print(classification_report(y_type_test, type_model.predict(X_test)))
 
-# Save model & vectorizer
-joblib.dump(model, "emergency_model.pkl")
-joblib.dump(vectorizer, "tfidf_vectorizer.pkl")
+print("\n📊 SEVERITY CLASSIFICATION REPORT")
+print(classification_report(y_severity_test, severity_model.predict(X_test)))
 
-print("Model and vectorizer saved successfully!")
+# -------- SAVE --------
+pickle.dump(vectorizer, open("tfidf_vectorizer.pkl", "wb"))
+pickle.dump(type_model, open("emergency_model.pkl", "wb"))
+pickle.dump(severity_model, open("severity_model.pkl", "wb"))
+
+print("\n✅ Models + vectorizer saved successfully!")

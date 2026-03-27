@@ -4,6 +4,7 @@ import requests
 import joblib
 import re
 import logging
+import math
 from nltk.corpus import stopwords
 
 # -------- BLUEPRINT --------
@@ -31,6 +32,19 @@ def clean_text(text):
     words = text.split()
     words = [w for w in words if w not in stop_words]
     return " ".join(words)
+
+# -------- 📍 HAVERSINE DISTANCE --------
+def haversine(lat1, lon1, lat2, lon2):
+    R = 6371
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+
+    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
+    return R * c
 
 # -------------------- FIRST AID --------------------
 def get_first_aid(type_, severity):
@@ -61,65 +75,157 @@ def get_first_aid(type_, severity):
     }
 
     steps = base_steps.get(type_, ["Stay calm", "Follow safety instructions"])
+
     if severity == "high":
         steps.append("Call emergency services immediately")
     else:
         steps.append("Seek help if needed")
+
     return steps
 
 # -------------------- FIND NEAREST SERVICE --------------------
 def get_nearest_service(lat, lon, emergency_type):
     try:
         if lat is None or lon is None:
-            return "Location not available", lat, lon
+            logging.error("No location received")
+            return "Location not available", None, None, None
 
-        query = "police"
+        # -------- QUERY TYPES --------
         if emergency_type.lower() == "fire":
-            query = "fire_station"
+            queries = ["fire_station"]
         elif emergency_type.lower() in ["accident", "medical"]:
-            query = "hospital"
+            queries = ["hospital", "clinic", "doctors"]
+        else:
+            queries = ["police"]
 
         overpass_url = "https://overpass-api.de/api/interpreter"
-        overpass_query = f"""
-        [out:json];
-        node
-          ["amenity"="{query}"]
-          (around:5000,{lat},{lon});
-        out;
-        """
-        response = requests.get(overpass_url, params={'data': overpass_query}, timeout=5)
-        if response.status_code != 200:
-            return "Service unavailable", lat, lon
 
-        data = response.json()
-        if data.get("elements"):
-            closest = min(
-                data["elements"],
-                key=lambda x: (x["lat"] - lat)**2 + (x["lon"] - lon)**2
-            )
-            name = closest.get("tags", {}).get("name", query.title())
-            return name, closest["lat"], closest["lon"]
-        return "Not Found", lat, lon
+        for query in queries:
+            logging.info(f"Searching Overpass for: {query}")
+
+            overpass_query = f"""
+            [out:json];
+            (
+              node["amenity"="{query}"](around:20000,{lat},{lon});
+              way["amenity"="{query}"](around:20000,{lat},{lon});
+              relation["amenity"="{query}"](around:20000,{lat},{lon});
+            );
+            out center;
+            """
+
+            try:
+                response = requests.get(
+                    overpass_url,
+                    params={'data': overpass_query},
+                    timeout=8
+                )
+
+                if response.status_code != 200:
+                    continue
+
+                data = response.json()
+                elements = data.get("elements", [])
+
+                if not elements:
+                    continue
+
+                def get_coords(el):
+                    if "lat" in el and "lon" in el:
+                        return el["lat"], el["lon"]
+                    elif "center" in el:
+                        return el["center"]["lat"], el["center"]["lon"]
+                    return None, None
+
+                valid_places = []
+                for el in elements:
+                    el_lat, el_lon = get_coords(el)
+                    if el_lat and el_lon:
+                        valid_places.append((el, el_lat, el_lon))
+
+                if not valid_places:
+                    continue
+
+                closest = min(
+                    valid_places,
+                    key=lambda x: haversine(lat, lon, x[1], x[2])
+                )
+
+                el, c_lat, c_lon = closest
+                name = el.get("tags", {}).get("name", query.title())
+                distance = haversine(lat, lon, c_lat, c_lon)
+
+                logging.info(f"Found via Overpass: {name} ({distance:.2f} km)")
+
+                return name, c_lat, c_lon, round(distance, 2)
+
+            except Exception as e:
+                logging.error(f"Overpass error: {e}")
+                continue
+
+        # -------- 🔥 FALLBACK: NOMINATIM --------
+        logging.warning("Overpass failed. Using Nominatim fallback...")
+
+        if emergency_type.lower() == "fire":
+            keyword = "fire station"
+        elif emergency_type.lower() in ["accident", "medical"]:
+            keyword = "hospital"
+        else:
+            keyword = "police station"
+
+        response = requests.get(
+            "https://nominatim.openstreetmap.org/search",
+            params={
+                "q": keyword,
+                "format": "json",
+                "limit": 5,
+                "lat": lat,
+                "lon": lon
+            },
+            headers={"User-Agent": "AERIS-App"},
+            timeout=8
+        )
+
+        results = response.json()
+
+        if results:
+            best = results[0]
+            name = best.get("display_name", keyword)
+            c_lat = float(best["lat"])
+            c_lon = float(best["lon"])
+            distance = haversine(lat, lon, c_lat, c_lon)
+
+            logging.info(f"Found via Nominatim: {name}")
+
+            return name, c_lat, c_lon, round(distance, 2)
+
+        return "Emergency service nearby", lat, lon, 0
+
     except Exception as e:
-        logging.error(f"OVERPASS ERROR: {e}")
-        return "Error fetching service", lat, lon
+        logging.error(f"SERVICE ERROR: {e}")
+        return "Error fetching service", None, None, None
 
 # -------------------- PREDICT API --------------------
 @emergency_bp.route('/predict', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
+
         emergency = data.get("emergency", "").strip()
         lat = data.get("lat")
         lon = data.get("lon")
 
+        logging.info(f"User location received: {lat}, {lon}")
+
         if not emergency:
             return jsonify({"status": "error", "message": "No emergency text provided"}), 400
 
-        # CLEAN
+        if lat is None or lon is None:
+            return jsonify({"status": "error", "message": "Location not provided"}), 400
+
+        # -------- CLEAN --------
         cleaned = clean_text(emergency)
 
-        # ML PREDICTION
+        # -------- ML PREDICTION --------
         X_input = vectorizer.transform([cleaned])
         type_ = type_model.predict(X_input)[0]
         severity = severity_model.predict(X_input)[0]
@@ -127,7 +233,7 @@ def predict():
         type_conf = float(type_model.predict_proba(X_input).max())
         severity_conf = float(severity_model.predict_proba(X_input).max())
 
-        # SUGGESTION
+        # -------- SUGGESTION --------
         suggestion_map = {
             "fire": "Evacuate immediately and call fire services",
             "medical": "Provide first aid and call ambulance",
@@ -136,13 +242,13 @@ def predict():
         }
         suggestion = suggestion_map.get(type_.lower(), "Stay safe and alert authorities")
 
-        # FIRST AID
+        # -------- FIRST AID --------
         first_aid = get_first_aid(type_, severity)
 
-        # NEAREST SERVICE
-        service_name, s_lat, s_lon = get_nearest_service(lat, lon, type_)
+        # -------- SERVICE --------
+        service_name, s_lat, s_lon, distance = get_nearest_service(lat, lon, type_)
 
-        # SAVE TO DB
+        # -------- SAVE TO DB --------
         try:
             conn = sqlite3.connect("database.db")
             cursor = conn.cursor()
@@ -154,17 +260,18 @@ def predict():
         finally:
             conn.close()
 
-        # -------------------- MAP URL --------------------
-        # MAP URL using Google Maps directions
+        # -------- MAP URL --------
         map_url = ""
-        if lat is not None and lon is not None and s_lat is not None and s_lon is not None:
+        if s_lat and s_lon:
             map_url = f"https://www.google.com/maps/dir/?api=1&origin={lat},{lon}&destination={s_lat},{s_lon}&travelmode=driving"
+
         return jsonify({
             "type": type_,
             "severity": severity,
             "suggestion": suggestion,
             "first_aid": first_aid,
             "service_name": service_name,
+            "distance_km": distance,
             "user_location": {"lat": lat, "lon": lon},
             "map_url": map_url,
             "high_alert": severity.lower() == "high",

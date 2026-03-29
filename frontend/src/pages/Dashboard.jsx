@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
 
 /* ── Inline SVG Icons ── */
 function HomeIcon({ className = 'w-5 h-5' }) {
@@ -64,12 +66,6 @@ const QUICK_ACCESS = [
   { icon: '/assets/status.svg', title: 'Status', sub: 'Track Active Status' },
 ];
 
-const ACTIVITY_ROWS = [
-  { incident: 'Fire', id: 'AIR123', status: 'Resolved', date: 'Apr 22, 8:41 PM' },
-  { incident: 'Medical', id: 'AIR134', status: 'Resolved', date: 'Apr 22, 4:41 PM' },
-  { incident: 'Fire', id: 'AIR123', status: 'Resolved', date: 'Apr 23, 8:41 AM' },
-];
-
 /* ── Sidebar Nav Items ── */
 const NAV = [
   { id: 'home', label: 'Home', icon: <HomeIcon /> },
@@ -81,6 +77,48 @@ const NAV = [
 
 export default function Dashboard() {
   const [activeNav, setActiveNav] = useState('home');
+  const [activity, setActivity] = useState([]);       // ✅ dynamic activity
+  const [userName, setUserName] = useState("User");   // ✅ dynamic user name
+  const navigate = useNavigate();
+
+  // ✅ Fetch logged-in user and their activity
+  useEffect(() => {
+    async function loadData() {
+      // Get current user from Supabase
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        navigate("/auth");
+        return;
+      }
+
+      // Get user name from users table
+      const { data: userData } = await supabase
+  .from("users")
+  .select("name")
+  .eq("email", user.email)
+  .single();
+
+      if (userData) setUserName(userData.name);
+
+      // Get recent incidents from backend
+      const BACKEND = "https://shiny-goldfish-4j7xv94r4g452qq5p-5000.app.github.dev";
+      try {
+        const res = await fetch(`${BACKEND}/`);
+        const data = await res.json();
+        console.log("Backend:", data);
+      } catch (err) {
+        console.error("Backend error:", err);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  // ✅ Logout handler
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    navigate("/auth");
+  }
 
   return (
     <div className="flex h-screen font-montserrat overflow-hidden bg-white">
@@ -137,7 +175,6 @@ export default function Dashboard() {
 
         {/* Header */}
         <header className="flex items-center gap-4 px-8 py-4 border-b border-gray-100 bg-white">
-          {/* Search */}
           <div className="flex-1 max-w-2xl">
             <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2.5">
               <SearchIcon className="w-4 h-4 text-gray-400 flex-shrink-0" />
@@ -149,9 +186,12 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex items-center gap-4 ml-auto">
-            <button className="bg-primary-red text-white font-bold px-6 py-2.5 rounded-full text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
+            {/* ✅ Logout now works */}
+            <button
+              onClick={handleLogout}
+              className="bg-primary-red text-white font-bold px-6 py-2.5 rounded-full text-sm hover:opacity-90 transition-opacity whitespace-nowrap"
+            >
               Log Out
             </button>
             <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
@@ -170,12 +210,15 @@ export default function Dashboard() {
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto px-8 py-6 bg-white">
 
-          {/* Greeting */}
-          <h1 className="text-[1.5rem] font-bold text-text-dark mb-0.5">Hello Hridhya! 👋</h1>
+          {/* ✅ Dynamic greeting */}
+          <h1 className="text-[1.5rem] font-bold text-text-dark mb-0.5">Hello {userName}! 👋</h1>
           <p className="text-gray-400 text-sm mb-5">Stay Safe Today</p>
 
           {/* Report Emergency Button */}
-          <button className="w-full bg-primary-red text-white font-bold text-[1.05rem] py-4 rounded-2xl flex items-center justify-center gap-4 mb-6 hover:opacity-95 transition-opacity shadow-sm">
+          <button
+            onClick={() => navigate("/emergency")}
+            className="w-full bg-primary-red text-white font-bold text-[1.05rem] py-4 rounded-2xl flex items-center justify-center gap-4 mb-6 hover:opacity-95 transition-opacity shadow-sm"
+          >
             <img src="/assets/emergencycall.svg" alt="Emergency Call" className="h-8 w-8 object-contain" />
             Report Emergency
           </button>
@@ -183,8 +226,6 @@ export default function Dashboard() {
           {/* Quick Access */}
           <p className="font-semibold text-text-dark text-[0.95rem] mb-3">Quick Access</p>
           <div className="flex gap-4 mb-6">
-
-            {/* 2×2 cards */}
             <div className="flex-1 grid grid-cols-2 gap-3">
               {QUICK_ACCESS.map(({ icon, title, sub }) => (
                 <div
@@ -217,10 +258,7 @@ export default function Dashboard() {
 
           {/* Bottom Section */}
           <div className="grid grid-cols-2 gap-6">
-
-            {/* Left: Incident Card + Timeline */}
             <div>
-              {/* Accident Card */}
               <div className="bg-gray-100 rounded-2xl p-4 mb-3">
                 <div className="flex items-center gap-3 mb-3">
                   <img src="/assets/accident.svg" alt="Accident" className="h-12 w-12 object-contain flex-shrink-0" />
@@ -234,13 +272,11 @@ export default function Dashboard() {
                     <p className="text-gray-400 text-[0.75rem] mt-0.5">April 23, 3.45 PM</p>
                   </div>
                 </div>
-                {/* Progress Bar */}
                 <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full w-[65%] bg-primary-red rounded-full" />
                 </div>
               </div>
 
-              {/* Timeline */}
               <div className="flex flex-col gap-2">
                 <div className="bg-white border border-gray-100 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-sm cursor-pointer hover:border-gray-200 transition-colors">
                   <img src="/assets/ambulance.svg" alt="Ambulance" className="h-9 w-9 object-contain flex-shrink-0" />
@@ -255,27 +291,31 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Right: Recent Activity Table */}
+            {/* ✅ Dynamic Recent Activity Table */}
             <div>
-              <h3 className="font-bold text-text-dark text-[0.95rem] mb-4">Recent  Activity</h3>
+              <h3 className="font-bold text-text-dark text-[0.95rem] mb-4">Recent Activity</h3>
               <table className="w-full text-sm">
                 <thead>
                   <tr>
                     <th className="text-left font-bold text-text-dark pb-3 pr-3 text-[0.82rem]">Incident</th>
                     <th className="text-left font-bold text-text-dark pb-3 pr-3 text-[0.82rem]">Case Id</th>
                     <th className="text-left font-bold text-text-dark pb-3 pr-3 text-[0.82rem]">Status</th>
-                    <th className="text-left font-bold text-text-dark pb-3 text-[0.82rem]">Date &amp;Time</th>
+                    <th className="text-left font-bold text-text-dark pb-3 text-[0.82rem]">Date &amp; Time</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {ACTIVITY_ROWS.map((row, i) => (
+                  {activity.length > 0 ? activity.map((row, i) => (
                     <tr key={i} className="border-t border-gray-100">
                       <td className="py-2.5 pr-3 text-gray-500 text-[0.82rem]">{row.incident}</td>
                       <td className="py-2.5 pr-3 text-gray-500 text-[0.82rem]">{row.id}</td>
                       <td className="py-2.5 pr-3 text-gray-500 text-[0.82rem]">{row.status}</td>
                       <td className="py-2.5 text-gray-500 text-[0.82rem]">{row.date}</td>
                     </tr>
-                  ))}
+                  )) : (
+                    <tr>
+                      <td colSpan="4" className="py-4 text-gray-400 text-[0.82rem] text-center">No recent activity</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>

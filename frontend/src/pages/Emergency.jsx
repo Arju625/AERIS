@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BACKEND = "https://shiny-goldfish-4j7xv94r4g452qq5p-5000.app.github.dev";
+const BACKEND = "http://localhost:5000"; // Your local backend
 
 const NAV = [
   { id: "home", label: "Home", emoji: "🏠" },
@@ -26,6 +26,7 @@ function Emergency() {
   const [activeNav, setActiveNav] = useState("alerts");
   const navigate = useNavigate();
 
+  // ------------------ Text to Speech ------------------
   const speak = (text, alert = false) => {
     try {
       window.speechSynthesis.cancel();
@@ -46,6 +47,7 @@ function Emergency() {
     } catch (e) { console.warn("Siren error:", e); }
   };
 
+  // ------------------ Speech Recognition ------------------
   const startListening = () => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) { alert("Speech Recognition not supported"); return; }
@@ -56,16 +58,16 @@ function Emergency() {
     r.onerror = () => alert("Speech recognition failed.");
   };
 
+  // ------------------ Get Geolocation ------------------
   const getLocation = (onSuccess, onError) => {
     if (!navigator.geolocation) { alert("Geolocation not supported"); onError(); return; }
     navigator.geolocation.getCurrentPosition(onSuccess, () => {
-      navigator.geolocation.getCurrentPosition(onSuccess, () => {
-        alert("Unable to fetch location.");
-        onError();
-      }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+      alert("Unable to fetch location.");
+      onError();
     }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
   };
 
+  // ------------------ Predict ------------------
   const handleSend = () => {
     if (!inputText.trim()) { alert("Please enter or speak an emergency"); return; }
     setLoading(true);
@@ -84,6 +86,7 @@ function Emergency() {
       .then(result => {
         setLoading(false);
         if (!result || result.status === "error") { alert("Backend error"); return; }
+
         setMapUrl(result.map_url || "");
         setServiceName(result.service_name || "");
         setEmergencyType(result.type || "");
@@ -92,8 +95,10 @@ function Emergency() {
         setConfidence(result.confidence || {});
         setFirstAid(result.first_aid || []);
         setSubmitted(true);
+
         if (result.high_alert) { setIsAlert(true); playSiren(); } else { setIsAlert(false); }
-        speak("Emergency type " + result.type + ". Severity " + result.severity + ". Nearest service is " + result.service_name, result.high_alert);
+
+        speak(`Emergency type ${result.type}. Severity ${result.severity}. Nearest service is ${result.service_name}`, result.high_alert);
       })
       .catch(() => { setLoading(false); alert("Server not reachable."); });
     }, () => setLoading(false));
@@ -105,7 +110,7 @@ function Emergency() {
   return (
     <div style={{ display: "flex", minHeight: "100vh", fontFamily: "Montserrat, sans-serif", background: "#f1f5f9" }}>
 
-      {/* LEFT SIDEBAR ONLY */}
+      {/* LEFT SIDEBAR */}
       <div style={{
         width: "220px", flexShrink: 0, background: "#0d9488",
         display: "flex", flexDirection: "column", padding: "1.5rem 1rem",
@@ -135,25 +140,6 @@ function Emergency() {
             </button>
           ))}
         </nav>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          {[
-            { icon: "/assets/emergency_illustration.png", title: "Emergency History", sub: "View Past Report" },
-            { icon: "/assets/location.svg", title: "Nearby Services", sub: "Find Hospitals" },
-          ].map(({ icon, title, sub }) => (
-            <div key={title} style={{
-              background: "rgba(255,255,255,0.2)", borderRadius: "1rem",
-              padding: "0.75rem", display: "flex", alignItems: "center", gap: "0.75rem",
-              cursor: "pointer"
-            }}>
-              <img src={icon} style={{ height: "2.5rem", width: "2.5rem", objectFit: "cover" }} alt={title} />
-              <div>
-                <p style={{ fontWeight: "700", color: "#111", fontSize: "0.75rem" }}>{title}</p>
-                <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.7rem" }}>{sub}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* MAIN CONTENT */}
@@ -195,17 +181,12 @@ function Emergency() {
                 fontSize: "1rem", color: "#374151", background: "transparent"
               }}
             />
-            <button
-              onClick={startListening}
-              style={{
-                background: "#f1f5f9", border: "none", borderRadius: "50%",
-                width: "2.5rem", height: "2.5rem", cursor: "pointer",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "1.1rem"
-              }}
-            >
-              🎤
-            </button>
+            <button onClick={startListening} style={{
+              background: "#f1f5f9", border: "none", borderRadius: "50%",
+              width: "2.5rem", height: "2.5rem", cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "1.1rem"
+            }}>🎤</button>
             <button
               onClick={handleSend}
               disabled={loading}
@@ -220,7 +201,7 @@ function Emergency() {
             </button>
           </div>
 
-          {/* ILLUSTRATION — shown before prediction */}
+          {/* ILLUSTRATION / RESULTS */}
           {!submitted && (
             <div style={{
               borderRadius: "1.5rem", overflow: "hidden",
@@ -235,10 +216,12 @@ function Emergency() {
             </div>
           )}
 
-          {/* RESULTS — shown after prediction */}
           {submitted && (
             <div>
+              {/* GRID INFO */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
+                
+                {/* Emergency Type */}
                 <div style={{ background: "white", borderRadius: "1.25rem", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", padding: "1.5rem", borderTop: "4px solid #b91c1c" }}>
                   <p style={{ color: "#6b7280", fontSize: "0.8rem", fontWeight: "600", marginBottom: "0.5rem" }}>EMERGENCY TYPE</p>
                   <p style={{ fontSize: "2rem", marginBottom: "0.25rem" }}>{typeEmoji}</p>
@@ -246,15 +229,15 @@ function Emergency() {
                   <p style={{ fontSize: "0.75rem", color: "#6b7280" }}>Confidence: {Math.round((confidence.type || 0) * 100)}%</p>
                 </div>
 
+                {/* Severity */}
                 <div style={{ background: "white", borderRadius: "1.25rem", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", padding: "1.5rem", borderTop: "4px solid " + severityColor }}>
                   <p style={{ color: "#6b7280", fontSize: "0.8rem", fontWeight: "600", marginBottom: "0.5rem" }}>SEVERITY</p>
-                  <p style={{ fontSize: "2rem", marginBottom: "0.25rem" }}>
-                    {severity === "high" ? "🔴" : severity === "medium" ? "🟡" : "🟢"}
-                  </p>
+                  <p style={{ fontSize: "2rem", marginBottom: "0.25rem" }}>{severity === "high" ? "🔴" : severity === "medium" ? "🟡" : "🟢"}</p>
                   <p style={{ fontWeight: "800", fontSize: "1.2rem", color: severityColor, textTransform: "capitalize" }}>{severity}</p>
                   <p style={{ fontSize: "0.75rem", color: "#6b7280" }}>Confidence: {Math.round((confidence.severity || 0) * 100)}%</p>
                 </div>
 
+                {/* Nearest Service */}
                 <div style={{ background: "white", borderRadius: "1.25rem", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", padding: "1.5rem", borderTop: "4px solid #0891b2" }}>
                   <p style={{ color: "#6b7280", fontSize: "0.8rem", fontWeight: "600", marginBottom: "0.5rem" }}>NEAREST SERVICE</p>
                   <p style={{ fontSize: "2rem", marginBottom: "0.25rem" }}>🚑</p>
@@ -267,6 +250,7 @@ function Emergency() {
                 </div>
               </div>
 
+              {/* Suggestion */}
               <div style={{ background: "#fef3c7", borderRadius: "1.25rem", padding: "1.25rem 1.5rem", marginBottom: "1rem", borderLeft: "4px solid #d97706", display: "flex", gap: "1rem" }}>
                 <span style={{ fontSize: "1.5rem" }}>💡</span>
                 <div>
@@ -275,6 +259,7 @@ function Emergency() {
                 </div>
               </div>
 
+              {/* First Aid Steps */}
               <div style={{ background: "white", borderRadius: "1.25rem", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", padding: "1.5rem" }}>
                 <h3 style={{ fontWeight: "800", color: "#111", marginBottom: "1rem" }}>🩹 First Aid Steps</h3>
                 <ol style={{ paddingLeft: "1.25rem", margin: 0 }}>
@@ -294,4 +279,3 @@ function Emergency() {
 }
 
 export default Emergency;
-

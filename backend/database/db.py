@@ -1,41 +1,21 @@
-import sqlite3
+from supabase_client import supabase
 
 def init_db():
-    conn = sqlite3.connect("emergencies.db")
-    cursor = conn.cursor()
+    pass  # Supabase handles everything, nothing needed here
 
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS logs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        type TEXT,
-        severity TEXT,
-        suggestion TEXT,
-        latitude REAL,
-        longitude REAL,
-        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-
-    conn.commit()
-    conn.close()
-
-
-# -------- LOG FUNCTION --------
 def log_emergency(data):
-    conn = sqlite3.connect("emergencies.db")
-    cursor = conn.cursor()
+    response = supabase.table("logs").insert({
+        "log_id":        data["log_id"],
+        "inci_id":       data["inci_id"],
+        "resp_time":     data.get("resp_time"),
+        "ai_prediction": data.get("ai_prediction"),
+    }).execute()
+    return response
 
-    cursor.execute("""
-    INSERT INTO logs (type, severity, lat, lon, service, distance)
-    VALUES (?, ?, ?, ?, ?, ?)
-    """, (
-        data["type"],
-        data["severity"],
-        data["lat"],
-        data["lon"],
-        data["service"],
-        data["distance"]
-    ))
-
-    conn.commit()
-    conn.close()
+def get_logs_by_incident(inci_id: str):
+    response = supabase.table("logs") \
+        .select("*") \
+        .eq("inci_id", inci_id) \
+        .order("created_at", desc=True) \
+        .execute()
+    return response.data

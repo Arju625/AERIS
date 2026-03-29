@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BACKEND = "https://shiny-goldfish-4j7xv94r4g452qq5p-5000.app.github.dev";
-
+const BACKEND = "http://127.0.0.1:5000";
 const NAV = [
   { id: "home", label: "Home", emoji: "🏠" },
   { id: "alerts", label: "Alerts", emoji: "🔔" },
@@ -82,6 +81,7 @@ function Emergency() {
       })
       .then(res => res.json())
       .then(result => {
+        console.log("🔥 RESPONSE:", result);
         setLoading(false);
         if (!result || result.status === "error") { alert("Backend error"); return; }
         setMapUrl(result.map_url || "");

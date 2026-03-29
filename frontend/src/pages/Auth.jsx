@@ -1,123 +1,205 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { supabase } from "../supabaseClient";
 
-function SocialIcons() {
+function GoogleIcon() {
   return (
-    <div className="flex gap-3 justify-center">
-      {/* Google */}
-      <button className="w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:opacity-80 transition-opacity">
-        <svg viewBox="0 0 24 24" className="w-5 h-5">
-          <path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115Z" />
-          <path fill="#34A853" d="M16.04 18.013c-1.09.703-2.474 1.078-4.04 1.078a7.077 7.077 0 0 1-6.723-4.823l-4.04 3.067A11.965 11.965 0 0 0 12 24c2.933 0 5.735-1.043 7.834-3l-3.793-2.987Z" />
-          <path fill="#4A90D9" d="M19.834 21c2.195-2.048 3.62-5.096 3.62-9 0-.71-.109-1.473-.272-2.182H12v4.637h6.436c-.317 1.559-1.17 2.766-2.395 3.558L19.834 21Z" />
-          <path fill="#FBBC05" d="M5.277 14.268A7.12 7.12 0 0 1 4.909 12c0-.782.125-1.533.357-2.235L1.24 6.65A11.934 11.934 0 0 0 0 12c0 1.92.445 3.73 1.237 5.335l4.04-3.067Z" />
-        </svg>
-      </button>
-      {/* Facebook */}
-      <button className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center hover:opacity-80 transition-opacity">
-        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-      </button>
-      {/* Apple */}
-      <button className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center hover:opacity-80 transition-opacity">
-        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
-          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-        </svg>
-      </button>
-    </div>
+    <svg width="18" height="18" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
+}
+
+function AppleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+    </svg>
   );
 }
 
 function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  async function handleLogin() {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      alert(error.message);
+    } else {
+      navigate("/dashboard");
+    }
+  }
+
   return (
-    <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-10 md:px-16 py-12 md:py-20 w-full max-w-md md:max-w-xl">
-      <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">Login</h2>
+    <div style={{
+      background: "white",
+      borderRadius: "1.5rem",
+      boxShadow: "0 8px 40px rgba(0,0,0,0.10)",
+      padding: "3rem 3.5rem",
+      width: "100%",
+      maxWidth: "420px",
+    }}>
+      <h2 style={{ fontSize: "2.2rem", fontWeight: "800", textAlign: "center", marginBottom: "2rem", color: "#111" }}>Login</h2>
 
-      <div className="space-y-8 mb-10">
-        {/* Email */}
-        <div className="flex items-center gap-4 border-b border-gray-300 pb-3">
-          <svg className="w-5 h-5 md:w-6 md:h-6 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-          </svg>
-          <input
-            type="email"
-            placeholder="Email ID"
-            className="flex-1 outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
-          />
-        </div>
-
-        {/* Password */}
-        <div className="flex items-center gap-4 border-b border-gray-300 pb-3">
-          <svg className="w-5 h-5 md:w-6 md:h-6 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-          </svg>
-          <input
-            type="password"
-            placeholder="Password"
-            className="flex-1 outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
-          />
-          <button className="text-sm md:text-base font-bold text-primary-red hover:opacity-80 flex-shrink-0">Forgot?</button>
-        </div>
+      {/* Email */}
+      <div style={{ display: "flex", alignItems: "center", borderBottom: "1.5px solid #e0e0e0", marginBottom: "1.5rem", paddingBottom: "0.5rem" }}>
+        <span style={{ marginRight: "0.75rem", color: "#aaa" }}>@</span>
+        <input
+          type="email"
+          placeholder="Email ID"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ border: "none", outline: "none", width: "100%", fontSize: "1rem", color: "#555", background: "transparent" }}
+        />
       </div>
 
-      <button className="w-full bg-primary-red text-white font-bold py-4 rounded-full text-lg hover:opacity-90 transition-opacity mb-8">
+      {/* Password */}
+      <div style={{ display: "flex", alignItems: "center", borderBottom: "1.5px solid #e0e0e0", marginBottom: "0.5rem", paddingBottom: "0.5rem" }}>
+        <span style={{ marginRight: "0.75rem", color: "#aaa" }}>🔑</span>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ border: "none", outline: "none", width: "100%", fontSize: "1rem", color: "#555", background: "transparent" }}
+        />
+        <span style={{ color: "#b91c1c", fontSize: "0.85rem", cursor: "pointer", whiteSpace: "nowrap" }}>Forgot?</span>
+      </div>
+
+      <button
+        onClick={handleLogin}
+        style={{
+          width: "100%", background: "#b91c1c", color: "white",
+          fontWeight: "700", fontSize: "1.1rem", padding: "0.9rem",
+          borderRadius: "2rem", border: "none", cursor: "pointer",
+          marginTop: "1.5rem", marginBottom: "1.2rem"
+        }}
+      >
         Login
       </button>
 
-      <SocialIcons />
+      {/* Social Icons */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem" }}>
+        {[
+          { icon: <GoogleIcon />, bg: "white", border: "1.5px solid #e0e0e0" },
+          { icon: <FacebookIcon />, bg: "white", border: "1.5px solid #e0e0e0" },
+          { icon: <AppleIcon />, bg: "#111", border: "none" },
+        ].map((s, i) => (
+          <button key={i} style={{
+            width: "42px", height: "42px", borderRadius: "50%",
+            background: s.bg, border: s.border,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "pointer"
+          }}>
+            {s.icon}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
 
 function SignupForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
+
+  async function handleSignup() {
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.signUp({ email, password });
+    if (error) { alert(error.message); return; }
+
+    const { error: dbError } = await supabase.from("users").insert({
+      user_id: data.user.id,
+      name: name || email.split("@")[0],
+      email: email,
+    });
+
+    if (dbError) { alert("Database error: " + dbError.message); return; }
+
+    alert("Signup successful! Please login.");
+    navigate("/", { state: { tab: "login" } });
+  }
+
+  const fields = [
+    { placeholder: "Email ID", value: email, onChange: setEmail, type: "email" },
+    { placeholder: "Password", value: password, onChange: setPassword, type: "password" },
+    { placeholder: "Confirm Password", value: confirmPassword, onChange: setConfirmPassword, type: "password" },
+    { placeholder: "Full Name", value: name, onChange: setName, type: "text" },
+    { placeholder: "Mobile Number", value: phone, onChange: setPhone, type: "tel" },
+  ];
+
   return (
-    <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-10 md:px-16 py-12 md:py-16 w-full max-w-md md:max-w-xl">
-      <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-6">Sign Up</h2>
+    <div style={{
+      background: "white",
+      borderRadius: "1.5rem",
+      boxShadow: "0 8px 40px rgba(0,0,0,0.10)",
+      padding: "2.5rem 3.5rem",
+      width: "100%",
+      maxWidth: "420px",
+    }}>
+      <h2 style={{ fontSize: "2.2rem", fontWeight: "800", textAlign: "center", marginBottom: "1.2rem", color: "#111" }}>Sign Up</h2>
 
-      <div className="mb-8">
-        <SocialIcons />
+      {/* Social Icons */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
+        {[
+          { icon: <GoogleIcon />, bg: "white", border: "1.5px solid #e0e0e0" },
+          { icon: <FacebookIcon />, bg: "white", border: "1.5px solid #e0e0e0" },
+          { icon: <AppleIcon />, bg: "#111", border: "none" },
+        ].map((s, i) => (
+          <button key={i} style={{
+            width: "42px", height: "42px", borderRadius: "50%",
+            background: s.bg, border: s.border,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "pointer"
+          }}>
+            {s.icon}
+          </button>
+        ))}
       </div>
 
-      <div className="space-y-6 mb-8">
-        <div className="border-b border-gray-300 pb-3">
+      {/* Fields */}
+      {fields.map((f, i) => (
+        <div key={i} style={{ borderBottom: "1.5px solid #e0e0e0", marginBottom: "1.1rem", paddingBottom: "0.4rem" }}>
           <input
-            type="email"
-            placeholder="Email ID"
-            className="w-full outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
+            type={f.type}
+            placeholder={f.placeholder}
+            value={f.value}
+            onChange={(e) => f.onChange(e.target.value)}
+            style={{ border: "none", outline: "none", width: "100%", fontSize: "1rem", color: "#555", background: "transparent" }}
           />
         </div>
-        <div className="border-b border-gray-300 pb-3">
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
-          />
-        </div>
-        <div className="border-b border-gray-300 pb-3">
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            className="w-full outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
-          />
-        </div>
-        <div className="border-b border-gray-300 pb-3">
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
-          />
-        </div>
-        <div className="border-b border-gray-300 pb-3">
-          <input
-            type="tel"
-            placeholder="Mobile Number"
-            className="w-full outline-none text-base md:text-lg text-gray-500 placeholder-gray-400 bg-transparent font-medium"
-          />
-        </div>
-      </div>
+      ))}
 
-      <button className="w-full bg-primary-red text-white font-bold py-4 rounded-full text-lg hover:opacity-90 transition-opacity">
+      <button
+        onClick={handleSignup}
+        style={{
+          width: "100%", background: "#b91c1c", color: "white",
+          fontWeight: "700", fontSize: "1.1rem", padding: "0.9rem",
+          borderRadius: "2rem", border: "none", cursor: "pointer",
+          marginTop: "0.5rem"
+        }}
+      >
         Create Account
       </button>
     </div>
@@ -130,51 +212,57 @@ export default function Auth() {
   const [activeTab, setActiveTab] = useState(defaultTab);
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden font-montserrat">
-      {/* Left Panel */}
-      <div className="relative w-[45%] flex-shrink-0 overflow-hidden">
-        {/* AERIS Logo */}
-        <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
-          <img src="/assets/logo.svg" alt="Aeris Logo" className="h-[40px] md:h-[50px] object-contain" />
-          <div className="h-[30px] md:h-[40px] w-[2px] bg-black"></div>
-          <span className="text-2xl md:text-3xl font-black text-black tracking-[-1px]">AERIS</span>
+    <div style={{ display: "flex", height: "100vh", width: "100vw", overflow: "hidden", fontFamily: "Montserrat, sans-serif" }}>
+
+      {/* LEFT PANEL */}
+      <div style={{ width: "45%", position: "relative", flexShrink: 0, overflow: "hidden" }}>
+
+        {/* Logo */}
+        <div style={{ position: "absolute", top: "2rem", left: "2rem", zIndex: 20, display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <img src="/assets/logo.svg" alt="AERIS" style={{ height: "2rem" }} />
+          <span style={{ fontSize: "1.4rem", fontWeight: "900", color: "#111" }}>AERIS</span>
         </div>
 
-        {/* Background Image */}
         <img
           src="/assets/auth.svg"
           alt="Auth Background"
-          className="w-full h-full object-cover"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
 
-        {/* Tab Buttons — right edge of left panel */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col z-20 gap-2">
-          <button
-            onClick={() => setActiveTab('login')}
-            className={`px-8 md:px-12 py-5 md:py-6 text-lg md:text-xl font-bold rounded-tl-2xl rounded-bl-2xl transition-all cursor-pointer ${activeTab === 'login'
-                ? 'bg-white text-gray-900 shadow-[0_8px_30px_rgba(0,0,0,0.12)]'
-                : 'bg-white/40 text-white backdrop-blur-md hover:bg-white/50'
-              }`}
-          >
-            Login
-          </button>
-          <button
-            onClick={() => setActiveTab('signup')}
-            className={`px-8 md:px-12 py-5 md:py-6 text-lg md:text-xl font-bold rounded-tl-2xl rounded-bl-2xl transition-all cursor-pointer ${activeTab === 'signup'
-                ? 'bg-white text-gray-900 shadow-[0_8px_30px_rgba(0,0,0,0.12)]'
-                : 'bg-white/40 text-white backdrop-blur-md hover:bg-white/50'
-              }`}
-          >
-            Signup
-          </button>
+        {/* Tab Buttons */}
+        <div style={{
+          position: "absolute", right: 0, top: "50%",
+          transform: "translateY(-50%)", display: "flex",
+          flexDirection: "column", zIndex: 20, gap: "0.5rem"
+        }}>
+          {["login", "signup"].map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              style={{
+                padding: "1.2rem 2.5rem",
+                fontWeight: "700",
+                fontSize: "1rem",
+                borderRadius: "1rem 0 0 1rem",
+                border: "none",
+                cursor: "pointer",
+                background: activeTab === tab ? "white" : "rgba(255,255,255,0.4)",
+                color: activeTab === tab ? "#111" : "white",
+                textTransform: "capitalize"
+              }}
+            >
+              {tab === "login" ? "Login" : "Signup"}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Right Panel */}
-      <div className="flex-1 flex items-center justify-center bg-gray-100">
-        <div className="w-full px-8 flex justify-center">
-          {activeTab === 'login' ? <LoginForm /> : <SignupForm />}
-        </div>
+      {/* RIGHT PANEL */}
+      <div style={{
+        flex: 1, display: "flex", alignItems: "center",
+        justifyContent: "center", background: "#f3f4f6"
+      }}>
+        {activeTab === 'login' ? <LoginForm /> : <SignupForm />}
       </div>
     </div>
   );

@@ -66,6 +66,12 @@ const QUICK_ACCESS = [
   { icon: '/assets/status.svg', title: 'Status', sub: 'Track Active Status' },
 ];
 
+const NEARBY_HOSPITALS_URL = 'https://www.google.com/maps/search/hospitals+near+me';
+
+function openNearbyHospitals() {
+  window.open(NEARBY_HOSPITALS_URL, '_blank', 'noopener,noreferrer');
+}
+
 /* ── Sidebar Nav Items ── */
 const NAV = [
   { id: 'home', label: 'Home', icon: <HomeIcon /> },
@@ -158,6 +164,11 @@ export default function Dashboard() {
           ].map(({ icon, title, sub }) => (
             <div
               key={title}
+              onClick={() => {
+                if (title === 'Nearby Services') {
+                  openNearbyHospitals();
+                }
+              }}
               className="bg-white/25 rounded-2xl p-4 flex items-center gap-3 cursor-pointer hover:bg-white/35 transition-colors"
             >
               <img src={icon} alt={title} className="h-11 w-11 object-contain flex-shrink-0" />
@@ -230,6 +241,11 @@ export default function Dashboard() {
               {QUICK_ACCESS.map(({ icon, title, sub }) => (
                 <div
                   key={title}
+                  onClick={() => {
+                    if (title === 'Nearby Services') {
+                      openNearbyHospitals();
+                    }
+                  }}
                   className="bg-gray-100 rounded-2xl p-4 flex items-center gap-3 cursor-pointer hover:bg-gray-200 transition-colors"
                 >
                   <img src={icon} alt={title} className="h-10 w-10 object-contain flex-shrink-0" />
